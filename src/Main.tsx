@@ -288,7 +288,7 @@ export const Main: React.FC<MainProps> = () => {
                   <Ionicons
                     name="shirt"
                     size={iconSize24 * 2.5}
-                    color={Color.gray}
+                    color={Color.red}
                   />
                 </View>
                 <View style={{flex: 0.2}}></View>
@@ -296,7 +296,7 @@ export const Main: React.FC<MainProps> = () => {
                   <Ionicons
                     name="shirt"
                     size={iconSize24 * 2.5}
-                    color={Color.blue}
+                    color={Color.baseText}
                   />
                 </View>
               </View>
