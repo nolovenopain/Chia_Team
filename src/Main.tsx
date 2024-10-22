@@ -1,12 +1,6 @@
 /* eslint-disable react-native/no-inline-styles */
 import React, {useRef, useState} from 'react';
-import {
-  FlatList,
-  ImageBackground,
-  StyleSheet,
-  TextInput,
-  View,
-} from 'react-native';
+import {FlatList, StyleSheet, TextInput, View} from 'react-native';
 import {
   ButtonCus,
   FontAwesome,
@@ -136,50 +130,27 @@ export const Main: React.FC<MainProps> = () => {
               paddingVertical: px5 * 3,
             }}>
             <View style={{flex: 0.4, alignItems: 'center'}}>
-              <View
-                style={{
-                  paddingVertical: px5,
-                  paddingHorizontal: px5 * 2,
-                  backgroundColor: Color.white,
-                  borderRadius: px5,
-                }}>
-                <TextCus
-                  children={splitItem[0]}
-                  style={{fontSize: font20 * 1.1}}
-                />
-              </View>
+              <TextCus
+                children={splitItem[0]}
+                style={{fontSize: font20 * 1.1}}
+              />
             </View>
             <View
               style={{
                 flex: 0.2,
                 alignItems: 'center',
-                flexDirection: 'row',
-                justifyContent: 'center',
               }}>
-              <FontAwesome5
-                name="chevron-left"
-                color={Color.white}
-                size={iconSize24}
-              />
-              <FontAwesome5
-                name="chevron-right"
-                color={Color.white}
+              <Ionicons
+                name="remove-outline"
+                color={Color.baseText}
                 size={iconSize24}
               />
             </View>
             <View style={{flex: 0.4, alignItems: 'center'}}>
-              <View
-                style={{
-                  paddingVertical: px5,
-                  paddingHorizontal: px5 * 2,
-                  backgroundColor: Color.white,
-                  borderRadius: px5,
-                }}>
-                <TextCus
-                  children={splitItem[1]}
-                  style={{fontSize: font20 * 1.1}}
-                />
-              </View>
+              <TextCus
+                children={splitItem[1]}
+                style={{fontSize: font20 * 1.1}}
+              />
             </View>
           </View>
         </Swipeable>
@@ -188,9 +159,7 @@ export const Main: React.FC<MainProps> = () => {
   };
 
   return (
-    <ImageBackground
-      source={require('./Assets/bg.jpeg')}
-      style={styles.container}>
+    <View style={styles.container}>
       <View style={styles.navigation} />
       <View style={styles.body}>
         <FlatList
@@ -210,7 +179,7 @@ export const Main: React.FC<MainProps> = () => {
                 styleTitle={{
                   fontWeight: 'bold',
                   fontSize: font18 * 2,
-                  color: Color.white,
+                  color: Color.baseText,
                 }}
                 rightComponent={
                   <ButtonCus
@@ -314,7 +283,7 @@ export const Main: React.FC<MainProps> = () => {
                   <FontAwesome5
                     name="optin-monster"
                     size={iconSize24 * 3}
-                    color={Color.lightgreen}
+                    color={Color.skyblue}
                   />
                 }
                 isOpacity
@@ -326,18 +295,11 @@ export const Main: React.FC<MainProps> = () => {
                   style={{
                     flex: 0.4,
                     alignItems: 'center',
-                    justifyContent: 'center',
                   }}>
-                  <Ionicons
-                    name="shirt"
-                    size={iconSize24 * 2.7}
-                    color={Color.white}
-                  />
                   <Ionicons
                     name="shirt"
                     size={iconSize24 * 2.5}
                     color={Color.red}
-                    style={{position: 'absolute'}}
                   />
                 </View>
                 <View style={{flex: 0.2}} />
@@ -345,18 +307,11 @@ export const Main: React.FC<MainProps> = () => {
                   style={{
                     flex: 0.4,
                     alignItems: 'center',
-                    justifyContent: 'center',
                   }}>
-                  <Ionicons
-                    name="shirt"
-                    size={iconSize24 * 2.7}
-                    color={Color.white}
-                  />
                   <Ionicons
                     name="shirt"
                     size={iconSize24 * 2.5}
                     color={Color.baseText}
-                    style={{position: 'absolute'}}
                   />
                 </View>
               </View>
@@ -366,7 +321,7 @@ export const Main: React.FC<MainProps> = () => {
           style={{width: '100%', paddingVertical: px5 * 1.5}}
         />
       </View>
-    </ImageBackground>
+    </View>
   );
 };
 
