@@ -1,5 +1,12 @@
+/* eslint-disable react-native/no-inline-styles */
 import React, {useRef, useState} from 'react';
-import {FlatList, StyleSheet, TextInput, View} from 'react-native';
+import {
+  FlatList,
+  ImageBackground,
+  StyleSheet,
+  TextInput,
+  View,
+} from 'react-native';
 import {
   ButtonCus,
   FontAwesome,
@@ -10,22 +17,13 @@ import {
 } from './Components';
 import {Color} from './Utils';
 import {HeaderCus} from './Components/headerCustom';
-import {
-  font18,
-  font20,
-  iconSize18,
-  iconSize24,
-  iconSize5,
-  px5,
-  width,
-} from './Constants';
+import {font18, font20, iconSize24, iconSize5, px5, width} from './Constants';
 import LinearGradient from 'react-native-linear-gradient';
 import {GestureHandlerRootView, Swipeable} from 'react-native-gesture-handler';
 
 interface MainProps {}
 
 export const Main: React.FC<MainProps> = () => {
-
   const player1Ref = useRef<TextInput>(null);
   const player2Ref = useRef<TextInput>(null);
 
@@ -35,7 +33,7 @@ export const Main: React.FC<MainProps> = () => {
   const [listAllPlayersTmp, setListAllPlayersTmp] = useState<Array<string>>([]);
 
   const addPlayers = () => {
-    if (player1 != '' || player2 != '') {
+    if (player1 !== '' || player2 !== '') {
       let listAll = [...listAllPlayers];
       let listAllTmp = [...listAllPlayersTmp];
       let couple = player1 + '-' + player2;
@@ -55,7 +53,7 @@ export const Main: React.FC<MainProps> = () => {
     listAll.map((value: any) => {
       let i = Math.floor(Math.random() * 10);
       let splitItem = value.split('-');
-      if (i % 2 == 0) {
+      if (i % 2 === 0) {
         listAllTmp.push(splitItem[1] + '-' + splitItem[0]);
       } else {
         listAllTmp.push(splitItem[0] + '-' + splitItem[1]);
@@ -122,7 +120,9 @@ export const Main: React.FC<MainProps> = () => {
           }}
           onSwipeableWillOpen={() => {
             [...rowRefs.entries()].forEach(([key, ref]) => {
-              if (key !== index && ref) ref.close();
+              if (key !== index && ref) {
+                ref.close();
+              }
             });
           }}
           renderRightActions={() => rightSwipe(index)}
@@ -133,22 +133,53 @@ export const Main: React.FC<MainProps> = () => {
               alignItems: 'center',
               borderBottomWidth: index < listAllPlayersTmp.length - 1 ? 1 : 0,
               borderColor: Color.borderInput,
-              paddingVertical: px5 * 4,
+              paddingVertical: px5 * 3,
             }}>
             <View style={{flex: 0.4, alignItems: 'center'}}>
-              <TextCus
-                children={splitItem[0]}
-                style={{fontSize: font20 * 1.2}}
-              />
+              <View
+                style={{
+                  paddingVertical: px5,
+                  paddingHorizontal: px5 * 2,
+                  backgroundColor: Color.white,
+                  borderRadius: px5,
+                }}>
+                <TextCus
+                  children={splitItem[0]}
+                  style={{fontSize: font20 * 1.1}}
+                />
+              </View>
             </View>
-            <View style={{flex: 0.2, alignItems: 'center'}}>
-              <Ionicons name="ios-remove-outline" size={iconSize18} />
+            <View
+              style={{
+                flex: 0.2,
+                alignItems: 'center',
+                flexDirection: 'row',
+                justifyContent: 'center',
+              }}>
+              <FontAwesome5
+                name="chevron-left"
+                color={Color.white}
+                size={iconSize24}
+              />
+              <FontAwesome5
+                name="chevron-right"
+                color={Color.white}
+                size={iconSize24}
+              />
             </View>
             <View style={{flex: 0.4, alignItems: 'center'}}>
-              <TextCus
-                children={splitItem[1]}
-                style={{fontSize: font20 * 1.2}}
-              />
+              <View
+                style={{
+                  paddingVertical: px5,
+                  paddingHorizontal: px5 * 2,
+                  backgroundColor: Color.white,
+                  borderRadius: px5,
+                }}>
+                <TextCus
+                  children={splitItem[1]}
+                  style={{fontSize: font20 * 1.1}}
+                />
+              </View>
             </View>
           </View>
         </Swipeable>
@@ -157,8 +188,10 @@ export const Main: React.FC<MainProps> = () => {
   };
 
   return (
-    <View style={styles.container}>
-      <View style={styles.navigation}></View>
+    <ImageBackground
+      source={require('./Assets/bg.jpeg')}
+      style={styles.container}>
+      <View style={styles.navigation} />
       <View style={styles.body}>
         <FlatList
           keyExtractor={(item, index) => index.toString()}
@@ -177,6 +210,7 @@ export const Main: React.FC<MainProps> = () => {
                 styleTitle={{
                   fontWeight: 'bold',
                   fontSize: font18 * 2,
+                  color: Color.white,
                 }}
                 rightComponent={
                   <ButtonCus
@@ -223,7 +257,11 @@ export const Main: React.FC<MainProps> = () => {
                   />
                 </View>
                 <View style={{flex: 0.1, alignItems: 'center'}}>
-                  <Ionicons name="ios-remove-outline" size={iconSize24} />
+                  <Ionicons
+                    name="ios-remove-outline"
+                    color={Color.white}
+                    size={iconSize24}
+                  />
                 </View>
                 <View
                   style={{
@@ -271,12 +309,12 @@ export const Main: React.FC<MainProps> = () => {
               </View>
 
               <ButtonCus
-                style={{marginTop: px5 * 6, marginBottom: px5 * 8}}
+                style={{marginTop: px5 * 6, marginBottom: px5 * 6}}
                 children={
                   <FontAwesome5
                     name="optin-monster"
                     size={iconSize24 * 3}
-                    color={Color.skyblue}
+                    color={Color.lightgreen}
                   />
                 }
                 isOpacity
@@ -284,19 +322,41 @@ export const Main: React.FC<MainProps> = () => {
               />
 
               <View style={{flexDirection: 'row'}}>
-                <View style={{flex: 0.4, alignItems: 'center'}}>
+                <View
+                  style={{
+                    flex: 0.4,
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                  }}>
+                  <Ionicons
+                    name="shirt"
+                    size={iconSize24 * 2.7}
+                    color={Color.white}
+                  />
                   <Ionicons
                     name="shirt"
                     size={iconSize24 * 2.5}
                     color={Color.red}
+                    style={{position: 'absolute'}}
                   />
                 </View>
-                <View style={{flex: 0.2}}></View>
-                <View style={{flex: 0.4, alignItems: 'center'}}>
+                <View style={{flex: 0.2}} />
+                <View
+                  style={{
+                    flex: 0.4,
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                  }}>
+                  <Ionicons
+                    name="shirt"
+                    size={iconSize24 * 2.7}
+                    color={Color.white}
+                  />
                   <Ionicons
                     name="shirt"
                     size={iconSize24 * 2.5}
                     color={Color.baseText}
+                    style={{position: 'absolute'}}
                   />
                 </View>
               </View>
@@ -306,7 +366,7 @@ export const Main: React.FC<MainProps> = () => {
           style={{width: '100%', paddingVertical: px5 * 1.5}}
         />
       </View>
-    </View>
+    </ImageBackground>
   );
 };
 

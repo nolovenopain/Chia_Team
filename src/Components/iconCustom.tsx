@@ -45,7 +45,7 @@ export const IconCus: React.FC<IconCusProps> = ({
     Zocial: ZocialRN,
   };
 
-  type = type == null || type == '' ? 'Ionicons' : type;
+  type = type == null || type === '' ? 'Ionicons' : type;
   size = size || iconSize24;
   color = color || Color.baseText;
   name = name || '';

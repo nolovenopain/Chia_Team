@@ -1,3 +1,6 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable react-native/no-inline-styles */
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, {useState, forwardRef, ReactNode, useRef, useEffect} from 'react';
 import {
   Animated,
@@ -40,7 +43,7 @@ interface TextInputCusProps extends TextInputProps {
 }
 
 export const TextInputCus = React.memo<TextInputCusProps>(
-  forwardRef((props: TextInputCusProps, ref) => {
+  forwardRef((props: TextInputCusProps, _ref) => {
     const [required, setRequired] = useState<boolean>(false);
     const [showPass, setShowPass] = useState<boolean | undefined>(
       props.hideshowText,

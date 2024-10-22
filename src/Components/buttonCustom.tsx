@@ -1,3 +1,4 @@
+/* eslint-disable react-native/no-inline-styles */
 import React, {ReactNode} from 'react';
 import {StyleProp, ViewStyle, TextStyle, Pressable} from 'react-native';
 import {TextCus} from './textCustom';
@@ -20,7 +21,7 @@ export const ButtonCus: React.FC<ButtonCusProps> = ({
   styleText,
   disabled,
   isOpacity,
-}) => { 
+}) => {
   return (
     <Pressable
       onPress={onPress}

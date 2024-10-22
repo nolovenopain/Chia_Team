@@ -1,3 +1,4 @@
+/* eslint-disable react-native/no-inline-styles */
 import React, {ReactNode} from 'react';
 import {Platform, StyleProp, TextStyle, View, ViewStyle} from 'react-native';
 import {Ionicons, MaterialIcons} from './iconCustom';
@@ -53,7 +54,6 @@ export const HeaderCus: React.FC<HeaderCusProps> = ({
   colorClose,
   colorGardients,
 }) => {
-
   const _render = () => {
     return (
       <View
